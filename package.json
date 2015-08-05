@@ -1,7 +1,7 @@
 {
   "name": "status-bar-clock",
   "main": "./lib/status-bar-clock",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Show the a clock inside the status bar",
   "repository": "https://github.com/wstucco/status-bar-clock",
   "license": "MIT",
@@ -9,10 +9,10 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "consumedServices": {
-     "status-bar": {
-       "versions": {
-         "^1.0.0": "consumeStatusBar"
-       }
-     }
-   }
+    "status-bar": {
+      "versions": {
+        "^1.0.0": "consumeStatusBar"
+      }
+    }
+  }
 }
