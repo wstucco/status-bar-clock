@@ -2,10 +2,16 @@
 StatusBarClockView = require './status-bar-clock-view'
 
 module.exports = StatusBarClock =
+  config:
+    activateOnStart:
+      type: 'string'
+      default: 'Remember last setting'
+      enum: ['Remember last setting', 'Show on start', 'Don\'t show on start']
+
   active: false
 
   activate: (state) ->
-    console.log 'Clock was activated'
+    @state = state
 
     @subscriptions = new CompositeDisposable
     # Register command that toggles this view
@@ -20,19 +26,33 @@ module.exports = StatusBarClock =
     @statusBarClockView.destroy()
     @statusBarTile?.destroy()
 
-  toggle: ->
-    if @active
-      @statusBarTile.destroy()
-      @statusBarClockView.deactivate()
-    else
+  serialize:->
+    {
+      activateOnStart: atom.config.get('status-bar-clock.activateOnStart'),
+      active: @active
+    }
+
+  toggle: (active = undefined) ->
+    active = ! !!@active if !active?
+
+    if active
       console.log 'Clock was toggled on'
       @statusBarClockView.activate()
       @statusBarTile = @statusBar.addRightTile
         item: @statusBarClockView, priority: -1
+    else
+      @statusBarTile?.destroy()
+      @statusBarClockView?.deactivate()
 
-    @active = ! !!@active
+    @active = active
 
   consumeStatusBar: (statusBar) ->
     @statusBar = statusBar
-    # auto activate as soon as status bar activates
-    @toggle()
+    # auto activate as soon as status bar activates based on configuration
+    @activateOnStart(@state)
+
+  activateOnStart: (state) ->
+    switch state.activateOnStart
+      when 'Remember last setting' then @toggle state.active
+      when 'Show on start' then @toggle true
+      else @toggle false
