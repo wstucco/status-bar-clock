@@ -1,6 +1,6 @@
 class StatusBarClockView extends HTMLElement
   init: ->
-    @classList.add('status-bar-clock', 'inline-block')
+    @classList.add('status-bar-clock', 'inline-block', 'icon-clock')
     @activate()
 
   activate: ->
