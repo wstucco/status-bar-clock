@@ -1,7 +1,7 @@
 {
   "name": "status-bar-clock",
   "main": "./lib/status-bar-clock",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Show the a clock inside the status bar",
   "keywords": [
     "clock",
