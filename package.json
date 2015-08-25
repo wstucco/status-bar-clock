@@ -1,13 +1,13 @@
 {
   "name": "status-bar-clock",
   "main": "./lib/status-bar-clock",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Show the a clock inside the status bar",
   "keywords": [
-     "clock",
-     "time",
-     "statusbar"
-   ],
+    "clock",
+    "time",
+    "statusbar"
+  ],
   "repository": "https://github.com/wstucco/status-bar-clock",
   "license": "MIT",
   "engines": {
