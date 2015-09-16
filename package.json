@@ -1,5 +1,5 @@
 {
-  "name": "clock",
+  "name": "status-bar-clock",
   "main": "./lib/status-bar-clock",
   "version": "2.0.3",
   "description": "Display the current time inside the status bar",
